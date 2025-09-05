@@ -1,0 +1,5 @@
+discord.py==2.6.3
+openai==1.104.1
+selenium==4.35.0
+beautifulsoup4==4.13.5
+python-dotenv==1.1.1

@@ -2,9 +2,9 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-from config import DISCORD_TOKEN, OPENAI_API_KEY
 from discord.ext import commands
 from dataclasses import dataclass
+from dotenv import load_dotenv
 from selenium import webdriver
 from bs4 import BeautifulSoup
 import datetime
@@ -13,6 +13,7 @@ import asyncio
 import discord
 import pytz
 import re
+import os
 
 try:
     from openai import AsyncOpenAI
@@ -20,6 +21,15 @@ try:
 except Exception:
     OPENAI_SDK_AVAILABLE = False
 
+load_dotenv()
+
+DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+
+if not DISCORD_TOKEN:
+    raise ValueError("DISCORD_TOKEN not found. Check the .env file. ")
+if not OPENAI_API_KEY:
+    raise ValueError("OPENAI_API_KEY not found. Check the .env file. ")
 
 @dataclass
 class News:
@@ -411,6 +421,6 @@ def main():
     except Exception as e:
         logger.critical(f"Failed to start the bot: {e}")
 
-
+        
 if __name__ == "__main__":
     main()

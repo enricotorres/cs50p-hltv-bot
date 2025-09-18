@@ -1,7 +1,7 @@
 # CS2 News Bot
 
 ## Video Demo
-[Link to demo video]
+https://youtu.be/1j23mjnRkVk
 
 ## Description
 
